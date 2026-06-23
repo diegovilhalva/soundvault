@@ -51,7 +51,7 @@ function search() {
         />
         <button
           @click="search"
-          class="px-6 py-4 bg-red-500 hover:bg-red-600 transition-colors text-white font-semibold tracking-wider uppercase text-sm"
+          class="px-6  py-4 bg-red-500 hover:bg-red-600 transition-colors text-white font-semibold tracking-wider uppercase text-sm"
         >
           Buscar
         </button>
