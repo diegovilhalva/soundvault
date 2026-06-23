@@ -113,12 +113,12 @@ function toggleFavorite() {
                                     ? 'bg-red-500 border-red-500 text-white'
                                     : 'bg-transparent border-white/20 text-white/60 hover:border-red-500 hover:text-red-500'
                             ]">
-                                <!-- Ícone Lucide Heart -->
+                                
                                 <Heart :size="16" :stroke-width="2.5"
                                     :fill="favorites.isFavoriteArtist(getArtist().name) ? 'currentColor' : 'none'"
                                     class="transition-colors duration-200" />
 
-                                <!-- Texto Dinâmico -->
+                              
                                 <span>
                                     {{ favorites.isFavoriteArtist(getArtist().name) ? 'Favoritado' : 'Favoritar' }}
                                 </span>
