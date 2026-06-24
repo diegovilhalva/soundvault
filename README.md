@@ -77,3 +77,9 @@ VITE_LASTFM_API_KEY=sua_chave_aqui
 ```
 
 Obtenha uma chave gratuita em [last.fm/api](https://www.last.fm/api/account/create).
+
+## Licença
+
+Este projeto está licenciado sob a licença [MIT](./LICENSE).
+
+---
