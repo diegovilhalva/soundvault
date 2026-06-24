@@ -7,7 +7,7 @@ import ArtistImage from '../components/common/ArtistImage.vue'
 
 const route = useRoute()
 
-const { data: tagData, loading: loadingTag, execute: fetchTag } = useLastfm(lastfm.getTagInfo)
+const { data: tagData,  execute: fetchTag } = useLastfm(lastfm.getTagInfo)
 const { data: artistsData, loading: loadingArtists, execute: fetchArtists } = useLastfm(lastfm.getTagTopArtists)
 const { data: albumsData, loading: loadingAlbums, execute: fetchAlbums } = useLastfm(lastfm.getTagTopAlbums)
 
