@@ -1,11 +1,11 @@
 import { ref } from 'vue'
 
-export function useLastfm<T>(fn: (...args: string[]) => Promise<T>) {
+export function useLastfm<T>(fn: (...args: any[]) => Promise<T>) {
   const data = ref<T | null>(null)
   const loading = ref(false)
   const error = ref<string | null>(null)
 
-  async function execute(...args: string[]) {
+  async function execute(...args: any[]) {
     loading.value = true
     error.value = null
     data.value = null

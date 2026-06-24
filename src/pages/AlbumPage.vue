@@ -46,13 +46,6 @@ function toggleFavorite() {
     })
 }
 
-function formatDuration(seconds: string) {
-    const s = parseInt(seconds)
-    if (!s) return null
-    const m = Math.floor(s / 60)
-    const rem = s % 60
-    return `${m}:${rem.toString().padStart(2, '0')}`
-}
 
 const currentAudioUrl = ref<string | null>(null)
 const audioPlayer = ref<HTMLAudioElement | null>(null)
@@ -153,8 +146,7 @@ onUnmounted(() => {
                 </div>
             </section>
 
-            <!-- Tracklist -->
-            <!-- Tracklist -->
+         
             <section class="max-w-4xl mx-auto px-6 py-12">
                 <h2 class="text-xl font-bold uppercase tracking-widest text-white mb-6">Tracklist</h2>
 

@@ -5,7 +5,7 @@ import { Pause, Play } from 'lucide-vue-next'
 const props = defineProps<{
   trackName: string
   artistName: string
-  index: number
+  index: number | string
   activePreviewUrl: string | null
 }>()
 
@@ -57,7 +57,7 @@ function handlePlayback() {
         <span v-if="loading" class="text-white/20 text-xs animate-pulse">...</span>
         
         <!-- Sem Preview disponível -->
-        <span v-else-if="!previewUrl" class="text-white/30 text-sm font-bold">{{ index + 1 }}</span>
+        <span v-else-if="!previewUrl" class="text-white/30 text-sm font-bold">{{ Number(index) + 1 }}</span>
         
         <!-- Botão interativo se houver preview -->
         <button 

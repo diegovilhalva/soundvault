@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useLastfm } from '../composables/useLastfm'
 import { useFavoritesStore } from '../stores/favorites'
 import { lastfm } from '../services/lastfm'
@@ -10,7 +10,7 @@ import { Heart } from 'lucide-vue-next'
 
 
 const route = useRoute()
-const router = useRouter()
+
 const favorites = useFavoritesStore()
 
 const currentAudioUrl = ref<string | null>(null)
