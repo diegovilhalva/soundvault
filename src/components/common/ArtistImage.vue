@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
 const props = defineProps<{
   artistName: string
@@ -7,6 +7,14 @@ const props = defineProps<{
 
 const imageUrl = ref('')
 const loading = ref(true)
+
+const initials = computed(() => {
+  return props.artistName
+    .split(' ')
+    .slice(0, 2)
+    .map(w => w[0]?.toUpperCase() || '')
+    .join('')
+})
 
 onMounted(async () => {
   try {
@@ -32,6 +40,11 @@ onMounted(async () => {
       :alt="artistName"
       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
     />
-    <div v-else class="w-full h-full flex items-center justify-center text-white/20 text-4xl">♪</div>
+    <div
+      v-else
+      class="w-full h-full flex items-center justify-center bg-white/5 text-white/40 font-bold text-xl tracking-widest"
+    >
+      {{ initials }}
+    </div>
   </div>
 </template>

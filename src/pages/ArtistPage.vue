@@ -7,6 +7,7 @@ import { lastfm } from '../services/lastfm'
 import ArtistImage from '../components/common/ArtistImage.vue'
 import TrackItem from '../components/common/TrackItem.vue'
 import { Heart } from 'lucide-vue-next'
+import SkeletonCard from '../components/common/SkeletonCard.vue'
 
 
 const route = useRoute()
@@ -113,12 +114,12 @@ function toggleFavorite() {
                                     ? 'bg-red-500 border-red-500 text-white'
                                     : 'bg-transparent border-white/20 text-white/60 hover:border-red-500 hover:text-red-500'
                             ]">
-                                
+
                                 <Heart :size="16" :stroke-width="2.5"
                                     :fill="favorites.isFavoriteArtist(getArtist().name) ? 'currentColor' : 'none'"
                                     class="transition-colors duration-200" />
 
-                              
+
                                 <span>
                                     {{ favorites.isFavoriteArtist(getArtist().name) ? 'Favoritado' : 'Favoritar' }}
                                 </span>
@@ -143,9 +144,11 @@ function toggleFavorite() {
                     <!-- Top Tracks -->
                     <section>
                         <h2 class="text-xl font-bold uppercase tracking-widest text-white mb-6">Top Tracks</h2>
-                        <div v-if="loadingTracks" class="text-white/40 tracking-wider text-sm">Carregando...</div>
+                        <div v-if="loadingTracks" class="flex flex-col gap-2">
+                            <div v-for="n in 5" :key="n" class="h-12 rounded-lg bg-white/5 animate-pulse"></div>
+                        </div>
                         <div v-else class="flex flex-col gap-2">
-                            
+
 
                             <!-- Tag de áudio HTML nativa que fará o som tocar -->
                             <audio ref="audioPlayer" @ended="currentAudioUrl = null" class="hidden"></audio>
@@ -160,7 +163,9 @@ function toggleFavorite() {
                     <!-- Álbuns -->
                     <section>
                         <h2 class="text-xl font-bold uppercase tracking-widest text-white mb-6">Álbuns</h2>
-                        <div v-if="loadingAlbums" class="text-white/40 tracking-wider text-sm">Carregando...</div>
+                        <div v-if="loadingAlbums" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                            <SkeletonCard v-for="n in 8" :key="n" />
+                        </div>
                         <div v-else class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                             <RouterLink v-for="album in (albumsData as any)?.topalbums?.album" :key="album.name"
                                 :to="`/album/${encodeURIComponent(getArtist().name)}/${encodeURIComponent(album.name)}`"
@@ -188,7 +193,9 @@ function toggleFavorite() {
                 <!-- Sidebar — Artistas Similares -->
                 <div>
                     <h2 class="text-xl font-bold uppercase tracking-widest text-white mb-6">Similares</h2>
-                    <div v-if="loadingSimilar" class="text-white/40 tracking-wider text-sm">Carregando...</div>
+                    <div v-if="loadingSimilar" class="flex flex-col gap-3">
+                        <div v-for="n in 10" :key="n" class="h-12 rounded-lg bg-white/5 animate-pulse"></div>
+                    </div>
                     <div v-else class="flex flex-col gap-3">
                         <RouterLink v-for="similar in (similarData as any)?.similarartists?.artist?.slice(0, 10)"
                             :key="similar.name" :to="`/artist/${encodeURIComponent(similar.name)}`"
