@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import {Search, SearchIcon} from "lucide-vue-next"
 
 const router = useRouter()
 const query = ref('')
@@ -39,7 +40,7 @@ function closeMenu() {
             class="flex-1 bg-transparent px-4 py-2 text-sm text-white placeholder-white/30 outline-none"
           />
           <button @click="search" class="px-4 py-2 text-white/50 hover:text-red-500 transition-colors">
-            ⌕
+            <Search class="w-4 h-4" />
           </button>
         </div>
       </div>
@@ -74,7 +75,7 @@ function closeMenu() {
           class="flex-1 bg-transparent px-4 py-2 text-sm text-white placeholder-white/30 outline-none"
         />
         <button @click="search" class="px-4 py-2 text-white/50 hover:text-red-500 transition-colors">
-          ⌕
+          <Search  class="w-4 h-4"  />
         </button>
       </div>
 
