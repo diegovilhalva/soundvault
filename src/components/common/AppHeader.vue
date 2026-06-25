@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import {Search, SearchIcon} from "lucide-vue-next"
+import {Search} from "lucide-vue-next"
 
 const router = useRouter()
 const query = ref('')
